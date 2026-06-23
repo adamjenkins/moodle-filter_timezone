@@ -47,7 +47,7 @@ final class text_filter_test extends \advanced_testcase {
         $this->setUser($user);
 
         // 2026-06-24 14:00 Asia/Tokyo (UTC+9) == 2026-06-24 05:00 UTC == 2026-06-24 17:00 Pacific/Auckland (UTC+12).
-        $timestamp = 1750734000;
+        $timestamp = 1782277200;
         $text = '<p>Meeting at <span class="filter_timezone" data-timestamp="' . $timestamp . '" ' .
             'data-timezone="Asia/Tokyo">2026-06-24 14:00 (Asia/Tokyo)</span></p>';
 
