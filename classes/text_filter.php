@@ -62,15 +62,26 @@ class text_filter extends \core_filters\text_filter {
      */
     protected function convert(array $matches): string {
         $attributes = $matches[1];
+        $content = $matches[2];
 
         if (!preg_match('/\bdata-timestamp="(\d+)"/i', $attributes, $timestampmatch)) {
             return $matches[0];
         }
-        if (!preg_match('/\bdata-timezone="[^"]+"/i', $attributes)) {
+        if (!preg_match('/\bdata-timezone="([^"]+)"/i', $attributes, $timezonematch)) {
             return $matches[0];
         }
 
         $timestamp = (int) $timestampmatch[1];
+        $authortimezone = $timezonematch[1];
+
+        if (!$this->is_pristine_content($content, $timestamp, $authortimezone)) {
+            // The span's content is not exactly the fallback text tiny_timezone wrote for this
+            // timestamp/timezone, most likely because something (e.g. a caret left inside the
+            // span while editing) caused extra text to end up inside it. Leave the span alone
+            // rather than risk discarding anything the author typed.
+            return $matches[0];
+        }
+
         $usertimezone = \core_date::get_user_timezone();
         $formatstring = get_config('filter_timezone', 'dateformat') ?: 'strftimedatetimeshort';
         if (!in_array($formatstring, self::DATETIME_FORMAT_STRINGS, true)) {
@@ -82,6 +93,42 @@ class text_filter extends \core_filters\text_filter {
             'timezone' => $usertimezone,
         ]);
 
-        return '<span' . $attributes . '>' . s($displaytext) . '</span>';
+        // Rebuild the span from only the attributes this method has itself validated, rather
+        // than reflecting the raw captured $attributes string: that string is whatever was in
+        // the original content, and blindly copying it through would faithfully reproduce any
+        // attacker-controlled markup (e.g. an event handler attribute) that slipped past
+        // upstream HTML cleaning, to every viewer of the page.
+        return '<span class="filter_timezone" contenteditable="false" data-timestamp="' . $timestamp .
+            '" data-timezone="' . s($authortimezone) . '">' . s($displaytext) . '</span>';
+    }
+
+    /**
+     * Check whether a span's content is exactly the fallback text tiny_timezone's editor would
+     * have written for the given timestamp/timezone (i.e. "Y-m-d H:i (timezone)" in the
+     * timezone the moment was authored in), with nothing added or removed.
+     *
+     * Already-converted content (i.e. previously rewritten by this same method for a different
+     * viewer) will not match either, since it is built from the viewer's own timezone/format
+     * rather than the authoring one. That is fine: leaving it untouched on a second pass is
+     * exactly the idempotent behaviour described in the class docblock.
+     *
+     * @param string $content the span's inner HTML, as captured by the regex.
+     * @param int $timestamp Unix timestamp (UTC seconds) from the span's data-timestamp.
+     * @param string $authortimezone IANA timezone identifier from the span's data-timezone.
+     * @return bool
+     */
+    protected function is_pristine_content(string $content, int $timestamp, string $authortimezone): bool {
+        try {
+            $datetime = new \DateTime('@' . $timestamp);
+            $datetime->setTimezone(new \DateTimeZone($authortimezone));
+        } catch (\Exception $e) {
+            // Not a valid IANA timezone identifier, so it can't have been written by the
+            // editor: treat the content as untrustworthy and leave it alone.
+            return false;
+        }
+
+        $expected = $datetime->format('Y-m-d H:i') . ' (' . $authortimezone . ')';
+
+        return $content === s($expected);
     }
 }

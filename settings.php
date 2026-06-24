@@ -38,7 +38,7 @@ if ($ADMIN->fulltree) {
         'filter_timezone/dateformat',
         get_string('dateformat', 'filter_timezone'),
         get_string('dateformat_desc', 'filter_timezone'),
-        'strftimedatetimeshort',
+        'strftimedatetime',
         $dateformatoptions
     ));
 }

@@ -24,6 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2026062400;
+$plugin->version   = 2026062401;
 $plugin->requires  = 2025041400;
 $plugin->component = 'filter_timezone';
