@@ -1,0 +1,10 @@
+{
+    "name": "adamjenkins/moodle-filter_timezone",
+    "description": "Converts date/time spans inserted by the companion tiny_timezone TinyMCE plugin from the timezone they were authored in to the timezone of the viewing user",
+    "type": "moodle-filter",
+    "require": {
+        "moodle/moodle": ">=5.0 <5.3",
+        "moodle/composer-installer": "^1.0"
+    },
+    "license": "GPL-3.0-or-later"
+}
