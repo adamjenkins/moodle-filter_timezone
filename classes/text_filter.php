@@ -26,7 +26,7 @@ namespace filter_timezone;
  * than once for different users).
  *
  * @package    filter_timezone
- * @copyright  2026 PluginDev
+ * @copyright  2026 Adam Jenkins <adam@wisecat.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class text_filter extends \core_filters\text_filter {

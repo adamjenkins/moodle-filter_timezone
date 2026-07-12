@@ -18,7 +18,7 @@
  * Privacy Subsystem implementation for filter_timezone.
  *
  * @package    filter_timezone
- * @copyright  2026 PluginDev
+ * @copyright  2026 Adam Jenkins <adam@wisecat.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,7 +27,7 @@ namespace filter_timezone\privacy;
 /**
  * Privacy Subsystem for filter_timezone implementing null_provider.
  *
- * @copyright  2026 PluginDev
+ * @copyright  2026 Adam Jenkins <adam@wisecat.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {

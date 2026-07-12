@@ -18,12 +18,15 @@
  * Version details
  *
  * @package    filter_timezone
- * @copyright  2026 PluginDev
+ * @copyright  2026 Adam Jenkins <adam@wisecat.net>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->version   = 2026062401;
-$plugin->requires  = 2025041400;
+$plugin->requires  = 2025041400; // Moodle 5.0.
+$plugin->supported = [500, 502];
 $plugin->component = 'filter_timezone';
+$plugin->maturity  = MATURITY_STABLE;
+$plugin->release   = '1.1.0';
