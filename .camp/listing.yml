@@ -1,0 +1,22 @@
+# camp listing manifest — descriptive content for your plugin's page.
+# Edit freely and commit; camp ingests this file at each tagged release.
+# Schema: https://camp-registry.org/schema/listing.schema.json
+name: filter_timezone
+summary: 'A text filter that converts date/times inserted by the companion tiny_timezone editor plugin into each viewing user''s own timezone.'
+description: |
+  Converts date/time spans authored with the companion **Timezone date/time**
+  TinyMCE plugin (`tiny_timezone`) from the timezone they were written in to
+  the timezone of the user viewing the page — `2026-06-24 14:00 (Asia/Tokyo)`
+  becomes `2026-06-24 17:00 (Pacific/Auckland)` for a viewer in New Zealand.
+  The timezone converted to is always shown alongside the rewritten time.
+labels:
+  # Required disclosure labels — pick all that apply (RFC §4.7):
+  #   fully-free | freemium | paid-service | external-account
+  #   donation-supported | commercial-support-available
+  - fully-free
+# screenshots:
+#   - path: .camp/screenshots/overview.png
+#     caption: Main view
+# links:
+#   docs: https://…
+#   issues: https://…
