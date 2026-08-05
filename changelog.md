@@ -5,6 +5,26 @@ Entries are ordered newest-first.
 
 ---
 
+## [2026080500] — 2026-08-05 — Define the `pluginname` language string
+
+### Added
+
+- `$string['pluginname'] = 'Timezone filter';` in `lang/en/filter_timezone.php`.
+  Filter plugins take their displayed name from `filtername` (already present,
+  and what `core\plugininfo\filter::init_display_name()` and `filter_get_name()`
+  actually read), but `pluginname` is required of every plugin and is the string
+  `uninstall_plugin()` falls back to for its heading. Reported by an external
+  review; the value matches the plugin's README title.
+
+### Verified
+
+- `scripts/phpcs-ci` clean (exit 0), proven non-vacuous by running it against a
+  copy with a deliberately malformed string line (7 errors, exit 2).
+- `moodle-plugin-ci validate` exit 0. Note it checks `filtername` only, so it
+  neither caught nor confirms this change; the string was confirmed defined by
+  including the lang file and dumping `$string` (6 keys, `pluginname` among
+  them), with `php -l` clean.
+
 ## [2026080400] — 2026-08-04 — Add the GPL-3.0 LICENSE file
 
 ### Added

@@ -1,7 +1,8 @@
 # Changes
 
-## v1.1.1 (2026080400)
+## v1.1.2 (2026080500)
 
-- The full GPL-3.0 licence text is now included as `LICENSE` in the repository
-  root. The plugin's licence is unchanged (GPL-3.0-or-later, as declared in
-  `composer.json`); the file was simply missing.
+- The `pluginname` language string is now defined ("Timezone filter"). Filter
+  plugins take their displayed name from `filtername`, which was already
+  present, but `pluginname` is required of every plugin and is what Moodle
+  falls back to on the plugin uninstall page. Flagged by an external review.

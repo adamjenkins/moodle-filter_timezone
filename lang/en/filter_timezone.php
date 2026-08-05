@@ -26,4 +26,5 @@ $string['converted'] = '{$a->datetime} ({$a->timezone})';
 $string['dateformat'] = 'Date/time format';
 $string['dateformat_desc'] = 'Format used to display the converted date and time. Each option is a format string defined by the current language pack.';
 $string['filtername'] = 'Timezone';
+$string['pluginname'] = 'Timezone filter';
 $string['privacy:metadata'] = 'The Timezone filter does not store any personal data.';
