@@ -1,5 +1,9 @@
 # Changes
 
+## Unreleased
+
+- Declare Moodle 5.3 support.
+
 ## v1.1.2 (2026080500)
 
 - The `pluginname` language string is now defined ("Timezone filter"). Filter

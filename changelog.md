@@ -5,6 +5,14 @@ Entries are ordered newest-first.
 
 ---
 
+## [Unreleased] — Declare Moodle 5.3 support
+
+### Changed
+
+- Declare Moodle 5.3 support: `$plugin->supported` in `version.php` is now
+  `[500, 503]` (was `[500, 502]`). No code changes were needed; the 5.3
+  UPGRADING.md checklist found no removed or changed APIs in use.
+
 ## [2026080500] — 2026-08-05 — Define the `pluginname` language string
 
 ### Added

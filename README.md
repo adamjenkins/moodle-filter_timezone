@@ -23,7 +23,7 @@ parentheses) is displayed unchanged — there is no broken or ambiguous fallback
 Requirements
 ============
 
-- Moodle 5.0 or later (CI-tested on Moodle 5.1 and 5.2)
+- Moodle 5.0 or later (CI-tested on Moodle 5.1 and 5.2; moodle.git main (5.3) as a non-blocking job)
 - PHP 8.2 or later
 - The `tiny_timezone` plugin (or any other source) producing the
   `<span class="filter_timezone" data-timestamp="..." data-timezone="...">` markup
