@@ -24,9 +24,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2026100300;
+$plugin->version   = 2026100400;
 $plugin->requires  = 2025041400; // Moodle 5.0.
 $plugin->supported = [500, 503];
 $plugin->component = 'filter_timezone';
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = '1.1.3';
+$plugin->release   = '1.1.4';
