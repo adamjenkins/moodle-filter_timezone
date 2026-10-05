@@ -14,9 +14,11 @@ labels:
   #   fully-free | freemium | paid-service | external-account
   #   donation-supported | commercial-support-available
   - fully-free
-# screenshots:
-#   - path: .camp/screenshots/overview.png
-#     caption: Main view
+screenshots:
+  - path: .camp/screenshots/01-converted-time.png
+    caption: A time written for Tokyo, shown to this viewer in their own timezone (America/New_York)
+  - path: .camp/screenshots/02-converted-time-page.png
+    caption: The converted time on the full page
 # links:
 #   docs: https://…
 #   issues: https://…
